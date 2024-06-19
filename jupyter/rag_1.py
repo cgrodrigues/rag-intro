@@ -118,10 +118,10 @@ QUESTION:
 {question}
 
 INSTRUCTIONS:
-Answer the users QUESTION using the DOCUMENT markdown text above.
-Give short and concise answers.
-Keep your answer ground in the facts of the DOCUMENT.
-If the DOCUMENT doesn’t contain the facts to answer the QUESTION return 'NONE'"""
+Answer the user's QUESTION using the DOCUMENT markdown text above.
+Provide short and concise answers.
+Base your answer solely on the facts from the DOCUMENT.
+If the DOCUMENT does not contain the necessary facts to answer the QUESTION, return 'NONE'."""
 
     return prompt, results
 

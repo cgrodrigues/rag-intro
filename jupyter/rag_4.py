@@ -34,7 +34,7 @@ def parse_experiments():
 def init_chroma_db(store_name:str="documents"):
     """ Initialize ChromaDB client. """
     chroma_client = chromadb.PersistentClient(path="./cromadb")
-    vector_store = chroma_client.get_or_create_collection(store_name)
+    vector_store = chroma_client.get_or_create_collection(name=store_name, metadata={"hnsw:space": "cosine"})
     return chroma_client, vector_store
     
 def chunk_embed_text(input, get_embeddings, chunk_size:int=0, overlap_size:int=0 ):
@@ -111,10 +111,14 @@ QUESTION:
 {question}
 
 INSTRUCTIONS:
-Answer the user's QUESTION using the DOCUMENT markdown text above.
-Provide short and concise answers.
-Base your answer solely on the facts from the DOCUMENT.
-If the DOCUMENT does not contain the necessary facts to answer the QUESTION, return 'NONE'."""
+
+- Answer the user's QUESTION using only the information from the DOCUMENT markdown text above.
+- Provide short, clear, and concise answers.
+- Ensure your answer is based solely on the facts presented in the DOCUMENT.
+- Do not include any information not found in the DOCUMENT.
+- If the DOCUMENT does not contain the necessary facts to answer the QUESTION, return 'NONE'.
+- Do not infer or assume any information not explicitly stated in the DOCUMENT.
+- Use bullet points if multiple points need to be addressed for better readability."""
 
     return prompt, results
 

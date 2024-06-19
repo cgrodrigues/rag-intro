@@ -34,7 +34,7 @@ def parse_experiments():
 def init_chroma_db(store_name:str="documents"):
     """ Initialize ChromaDB client. """
     chroma_client = chromadb.PersistentClient(path="./cromadb")
-    vector_store = chroma_client.get_or_create_collection(store_name)
+    vector_store = chroma_client.get_or_create_collection(name=store_name, metadata={"hnsw:space": "cosine"})
     return chroma_client, vector_store
     
 def chunk_embed_text(input, get_embeddings, chunk_size:int=0, overlap_size:int=0 ):
