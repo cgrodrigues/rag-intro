@@ -4,6 +4,7 @@ Welcome to the RAG Intro repository. This repository contains the code and resou
 
 The main code can be found in the Jupyter Notebook located at ./jupyter/text.ipynb. Follow the steps below to set up your environment and start exploring the RAG pipeline.
 
+
 ## Setup Instructions
 
 
